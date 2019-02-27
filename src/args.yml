@@ -1,0 +1,14 @@
+name: painter
+version: "1.0.0"
+author: Kied Llaentenn @kiedtl
+about: Get or set your desktop wallpaper on Windows from the terminal.
+subcommands:
+    - set:
+        about: Set the desktop wallpaper to a picture.
+        args:
+            - FILE:
+                required: true
+                help: The path to the image.
+                index: 1
+    - get:
+        about: Retrieve the path to the current desktop wallpaper image.
