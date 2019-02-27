@@ -1,0 +1,7 @@
+[package]
+name = "wallpaper"
+version = "0.1.0"
+authors = ["Kied T L <eli.georgios@gmail.com>"]
+edition = "2018"
+
+[dependencies]
