@@ -1,3 +1,4 @@
+os: windows
 language: rust
 script:
-  - cargo run --verbose
+  - cargo build --verbose --all
