@@ -6,13 +6,13 @@ Manage the Windows desktop wallpaper from the terminal
 painter.exe [command] [args]
 ```
 ### Commands
-- Get
+- `get` <br>
   Retrieve the path to the current wallpaper. E.g.
   ```
   $ ./painter get
   "C:\\Users\\foo\\AppData\\Roaming\\Microsoft\\Windows\\Themes\\TranscodedWallpaper"
   ```
-- Set \[path\]
+- `set \[path\]` <br >
   Set the wallpaper to an image. E.g.
   ```
   $ ./painter set "C:\Users\foo\Pictures\wallpaper.jpg"
