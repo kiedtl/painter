@@ -3,7 +3,7 @@ Manage the Windows desktop wallpaper from the terminal
 
 ## Installation
 - Try using [Scoop](https://scoop.sh). <br>
-  - First, add the LPTSTR-Scoop bucket (if you havn't already):
+  - First, add the LPTSTR-Scoop bucket (if you haven't already):
     ```
     $ scoop bucket add lptstr https://github.com/lptstr/lptstr-scoop
     ```
