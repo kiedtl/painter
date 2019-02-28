@@ -2,20 +2,21 @@
 Manage the Windows desktop wallpaper from the terminal
 
 ## Installation
-Try using [Scoop](https://scoop.sh). <br>
-- First, add the LPTSTR-Scoop bucket (if you havn't already):
-  ```
-  $ scoop bucket add lptstr https://github.com/lptstr/lptstr-scoop
-  ```
-- Now install the application:
-  ```
-  $ scoop install painter
-  ```
-- Then enjoy :smile:
-  ```
-  $ painter get
-  ```
+- Try using [Scoop](https://scoop.sh). <br>
+  - First, add the LPTSTR-Scoop bucket (if you havn't already):
+    ```
+    $ scoop bucket add lptstr https://github.com/lptstr/lptstr-scoop
+    ```
+  - Now install the application:
+    ```
+    $ scoop install painter
+    ```
+  - Then enjoy :smile:
+    ```
+    $ painter get
+    ```
 
+- Or, if you don't want to use a package manager, just download `painter.exe` from the latest release in the latest [releases section](https://github.com/lptstr/painter/releases).
 ## Usage 
 ```
 painter.exe [command] [args]
