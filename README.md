@@ -1,7 +1,7 @@
 # painter [![Build Status](https://travis-ci.org/lptstr/painter.svg?branch=master)](https://travis-ci.org/lptstr/painter)
 Manage the Windows desktop wallpaper from the terminal
 
-## Installation
+## Installation ![GitHub All Releases](https://img.shields.io/github/downloads/lptstr/painter/total.svg)
 - Try using [Scoop](https://scoop.sh). <br>
   - First, add the LPTSTR-Scoop bucket (if you haven't already):
     ```
