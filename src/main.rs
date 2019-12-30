@@ -23,7 +23,10 @@ const MAXPATH : usize = winapi::shared::minwindef::MAX_PATH;
 type Res<T> = std::result::Result<T, std::io::Error>;
 
 fn set_wallpaper(path: &str) -> Res<&str> {
-    let mut wpath: Vec<u16> = OsStr::new(path).encode_wide().chain(once(0)).collect::<Vec<_>>();
+    let mut wpath: Vec<u16> = OsStr::new(path)
+        .encode_wide()
+        .chain(once(0))
+        .collect::<Vec<_>>();
     let ret = unsafe {
         SystemParametersInfoW(
             SPI_SETDESKWALLPAPER,
@@ -33,14 +36,13 @@ fn set_wallpaper(path: &str) -> Res<&str> {
         )
     };
     match ret {
-        TRUE => Ok("YAY! 102 Successfully changed wallpaper."),
+        TRUE => Ok(""),
         _ => Err(Error::last_os_error().into()),
     }
 }
 
 #[cfg(windows)]
-fn get_wallpaper() -> Res<OsString> { // winapi::ctypes::c_void {
-    // let wide: Vec<u16> = OsStr::new(msg).encode_wide().chain(once(0)).collect();
+fn get_wallpaper() -> Res<OsString> {
     let imgpath = [0 as WCHAR; MAXPATH];
     let ret = unsafe {
         SystemParametersInfoW(
@@ -63,15 +65,19 @@ fn main() {
     let matches = App::from_yaml(yaml).get_matches();
 
     if let Some(matches) = matches.subcommand_matches("get") {
-        println!("{:?}", (get_wallpaper()).unwrap());
+        println!("{}", (get_wallpaper()).unwrap());
     } else if let Some(matches) = matches.subcommand_matches("set") {
-        if (Path::new((matches.value_of("FILE").unwrap())).exists()) {
-            println!("VERB 100 Attempting to set image to path {}", matches.value_of("FILE").unwrap());
-            println!("{:#?}", (set_wallpaper(matches.value_of("FILE").unwrap())).unwrap());
+        let file = matches.value_of("FILE").unwrap();
+        if fs::metadata(&*file).is_ok() {
+            let ret = set_wallpaper(matches.value_of("FILE").unwrap()));
+            match ret {
+                Ok(_)  => (),
+                Err(e) => print!("painter: error: {}", e),
+            }
         } else {
-            println!("ERR! 101 The file {} does not exist. Fatal.", matches.value_of("FILE").unwrap())
+            println!("painter: error: provided path '{}' doesn't exist.", file);
         }
     } else {
-        println!("ERR! 001 No valid flag, value, subcommand, or other argument was recieved. Fatal.")
+        ()
     }
 }
